@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme {
+  --color-bkg-primary: #102037;
+  --color-txt-primary: #fffeff;
+}
