@@ -1,0 +1,52 @@
+---
+import ServicesCard from "./ServicesCard.astro";
+import Chip from "../Icons/chip.astro";
+import PC from "../Icons/PC.astro";
+import Web from "../Icons/Web.astro";
+import X from "../Icons/X.astro";
+
+// Definimos los servicios con sus datos
+const services = [
+  {
+    icon: PC,
+    title: "Desarrollo Web & Landing Pages",
+    description:
+      "Convierte ideas en sitios web impresionantes. Creación de landing pages que venden, todo optimizado para una experiencia de usuario que deja huella.",
+  },
+  {
+    icon: Web,
+    title: "SEO",
+    description:
+      "Haz que tu web sea imposible de ignorar. Te ayudo a escalar posiciones en Google y atraer tráfico de calidad con estrategias SEO a medida.",
+  },
+  {
+    icon: Chip,
+    title: "Performance Web",
+    description:
+      "¿Tu sitio tarda demasiado? Te ayudo a mejorar la velocidad y rendimiento de tu web, para que cada clic sea instantáneo y la experiencia de usuario sea impecable.",
+  },
+];
+---
+
+<section class="bg-txt-primary w-full h-full">
+  <div class="py-20 md:pt-10 md:pb-20 md:pl-5 flex items-center gap-4">
+    <X size={"hidden md:block size-8 text-cyan-400"} />
+    <h1
+      class="uppercase font-bold text-xl text-center md:text-2xl md:text-left"
+    >
+      Desde tu idea hasta la web perfecta:
+    </h1>
+    <!-- <hr class="hidden md:block w-20 h-1.5 bg-fuchsia-500 mt-3 border-none" /> -->
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    {
+      services.map((service) => (
+        <ServicesCard
+          icon={service.icon}
+          title={service.title}
+          description={service.description}
+        />
+      ))
+    }
+  </div>
+</section>
