@@ -1,0 +1,38 @@
+<section
+  class="bg-bkg-primary text-txt-primary flex flex-col gap-1 items-center justify-center"
+>
+  <div class="text-center">
+    <h1 class="text-5xl font-bold">Newsletter</h1>
+    <p class="p-10">
+      ¿Todavía no estás seguro?
+      <br />
+      No te preocupes, suscribite a mi newsletter y te voy a mostrar cómo puedo ayudarte.
+    </p>
+  </div>
+
+  <div>
+    <form id="newsletter-form" class="flex flex-col gap-8 w-full max-w-md">
+      <input
+        type="text"
+        name="NOMBRE"
+        placeholder="Tu nombre va aca"
+        class="focus:outline-none border-b-2 w-72 placeholder:text-stone-400 p-1"
+        required
+      />
+      <input
+        type="email"
+        name="EMAIL"
+        placeholder="email@gmail.com"
+        class="focus:outline-none border-b-2 placeholder:text-stone-400 p-1"
+        required
+      />
+      <button
+        type="submit"
+        class="bg-txt-primary uppercase text-bkg-primary cursor-pointer rounded-2xl p-2 border-none"
+      >
+        Suscribirme
+      </button>
+    </form>
+    <p id="form-message" class="text-center mt-4"></p>
+  </div>
+</section>
