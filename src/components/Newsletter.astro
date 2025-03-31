@@ -1,3 +1,8 @@
+---
+const brevoFormActionURL =
+  "https://sibforms.com/serve/MUIFAMJ0paBOMSF1eNXd3cV12_ANagiMN0LhZun9_o3UuIeaCFHTf9kjm1T-Dt0XPlCk6Ivi7CV9gBrFAypyu--RHAQ7EX_Aa4L2j_vPY1VseqCCzZZjDmasumJnNzb5VLev1-3qg-k-_77uRwm6pWJJxfnH0yfHEg_ZP1CYBplVAYAQF_87OielHZ-X9AP5dHc2XL1P_hKgtYju"; // <-- ¡TU URL DE BREVO AQUÍ!
+---
+
 <section
   class="bg-bkg-primary text-txt-primary flex flex-col gap-1 items-center justify-center"
 >
@@ -11,12 +16,17 @@
   </div>
 
   <div>
-    <form id="newsletter-form" class="flex flex-col gap-8 w-full max-w-md">
+    <form
+      id="newsletter-form"
+      class="flex flex-col gap-8 w-full max-w-md"
+      method="POST"
+      action={brevoFormActionURL}
+    >
       <input
         type="text"
         name="NOMBRE"
-        placeholder="Tu nombre va aca"
-        class="focus:outline-none border-b-2 w-72 placeholder:text-stone-400 p-1"
+        placeholder="Nombre"
+        class="focus:outline-none border-b-2 placeholder:text-stone-400 p-1"
         required
       />
       <input
@@ -26,13 +36,47 @@
         class="focus:outline-none border-b-2 placeholder:text-stone-400 p-1"
         required
       />
+
+      <div class="text-sm text-gray-300">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            value="1"
+            id="OPT_IN"
+            name="OPT_IN"
+            class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-600 focus:ring-offset-gray-800"
+            required
+          />
+          <span
+            >Acepto recibir la newsletter y las <a
+              href="https://www.brevo.com/es/legal/privacypolicy/"
+              target="_blank"
+              class="text-blue-400 underline hover:text-blue-300"
+              >politicas y condiciones</a
+            >.</span
+          >
+          {/* Adapta el texto y el enlace */}
+        </label>
+      </div>
+
+      {/* Campos Ocultos de Brevo */}
+      <input
+        type="text"
+        name="email_address_check"
+        value=""
+        style="display: none;"
+        aria-hidden="true"
+      />
+      <input type="hidden" name="locale" value="es" />
+
       <button
+        id="newsletter-submit-button"
         type="submit"
         class="bg-txt-primary uppercase text-bkg-primary cursor-pointer rounded-2xl p-2 border-none"
       >
         Suscribirme
       </button>
     </form>
-    <p id="form-message" class="text-center mt-4"></p>
+    <p id="form-message" class="text-center mt-4 min-h-[1.25em] text-sm"></p>
   </div>
 </section>
