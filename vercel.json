@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/Confirm", "destination": "/confirm", "permanent": true },
+    { "source": "/CONFIRM", "destination": "/confirm", "permanent": true }
+  ]
+}
