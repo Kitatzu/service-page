@@ -1,5 +1,5 @@
 ---
-const brevoFormActionURL = import.meta.env.BREVO_FORM_ACTION_URL;
+import NewsletterForm from "./NewsletterForm.astro";
 ---
 
 <section
@@ -14,7 +14,9 @@ const brevoFormActionURL = import.meta.env.BREVO_FORM_ACTION_URL;
     </p>
   </div>
 
-  <div>
+  <NewsletterForm />
+
+  <!-- <div>
     <form
       id="newsletter-form"
       class="flex flex-col gap-8 w-full max-w-md"
@@ -54,19 +56,8 @@ const brevoFormActionURL = import.meta.env.BREVO_FORM_ACTION_URL;
               >politicas y condiciones</a
             >.</span
           >
-          {/* Adapta el texto y el enlace */}
         </label>
       </div>
-
-      {/* Campos Ocultos de Brevo */}
-      <input
-        type="text"
-        name="email_address_check"
-        value=""
-        style="display: none;"
-        aria-hidden="true"
-      />
-      <input type="hidden" name="locale" value="es" />
 
       <button
         id="newsletter-submit-button"
@@ -77,5 +68,5 @@ const brevoFormActionURL = import.meta.env.BREVO_FORM_ACTION_URL;
       </button>
     </form>
     <p id="form-message" class="text-center mt-4 min-h-[1.25em] text-sm"></p>
-  </div>
+  </div> -->
 </section>
