@@ -30,7 +30,7 @@ export async function POST({ request }: { request: APIContext["request"] }) {
     const { data, error } = await resend.emails.send({
       from: RESEND_EMAIL, // Reemplaza con tu dirección de remitente verificada en Resend
       to: email,
-      subject: "¡Bienvenido a nuestro sitio!", // Asunto del email de saludo
+      subject: "Estoy interesado en mejorar mi web", // Asunto del email de saludo
       html: emailHTML,
     });
 
