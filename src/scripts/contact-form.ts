@@ -30,8 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       if (!response.ok)
         throw new Error(data.error || "Error al enviar el email");
-
-      alert("¡Gracias por contactarnos! Hemos recibido tu email.");
+      window.location.href = "/confirm";
       contactForm.reset();
     } catch (error: any) {
       alert(error.message || "Ocurrió un problema, intenta nuevamente.");
