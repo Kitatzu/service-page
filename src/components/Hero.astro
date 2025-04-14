@@ -1,7 +1,8 @@
-<section
-  class="bg-bkg-primary text-txt-primary relative"
-  aria-labelledby="hero-title"
->
+---
+import Form from "./Form.astro";
+---
+
+<section class="bg-bkg-primary text-txt-primary relative">
   <div
     class="hidden md:block absolute right-0 top-0 bottom-0 w-1/2 bg-[url(../assets/background.webp)] bg-cover bg-right bg-no-repeat opacity-80"
     style="mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 60%); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 60%);"
@@ -30,41 +31,6 @@
   </div>
 
   <div class="relative flex justify-center mt-10 md:mt-30">
-    <form
-      class="rounded-xs flex items-center gap-2 sm:w-full max-w-md"
-      id="contact-form"
-    >
-      <input
-        type="email"
-        placeholder="email@gmail.com"
-        class="text-neutral-950 bg-txt-primary focus:outline-none p-3 w-52 md:w-72 rounded-l-xl border border-gray-300 hover:border-blue-400 transition-all"
-        required
-      />
-      <button
-        type="submit"
-        class="bg-text-secondary p-4 text-txt-primary text-sm font-semibold rounded-r-xl hover:bg-blue-600 focus:outline-none cursor-pointer transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        <span class="button-text">Contáctame</span>
-        <span
-          class="hidden loader w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
-        ></span>
-      </button>
-    </form>
+    <Form />
   </div>
 </section>
-
-<script src="/src/scripts/contact-form.ts"></script>
-
-<style>
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  .animate-spin {
-    animation: spin 0.8s linear infinite;
-  }
-</style>

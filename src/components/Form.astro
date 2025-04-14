@@ -1,0 +1,82 @@
+<form
+  class="contact-form rounded-xs flex items-center gap-2 sm:w-full max-w-md"
+>
+  <input
+    type="email"
+    placeholder="email@gmail.com"
+    class="text-neutral-950 bg-txt-primary focus:outline-none p-3 w-52 md:w-72 rounded-l-xl border border-gray-300 hover:border-blue-400 transition-all"
+    required
+  />
+  <button
+    type="submit"
+    class="bg-text-secondary p-4 text-txt-primary text-sm font-semibold rounded-r-xl hover:bg-blue-600 focus:outline-none cursor-pointer transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    <span class="button-text">Contáctame</span>
+    <span
+      class="hidden loader w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
+    ></span>
+  </button>
+</form>
+
+<style>
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-spin {
+    animation: spin 0.8s linear infinite;
+  }
+</style>
+
+<script>
+  document
+    .querySelectorAll<HTMLFormElement>(".contact-form")
+    .forEach((contactForm) => {
+      const emailInput = contactForm.querySelector(
+        "input[type='email']",
+      ) as HTMLInputElement;
+      const submitButton = contactForm.querySelector(
+        "button",
+      ) as HTMLButtonElement;
+      const buttonText = submitButton.querySelector(
+        ".button-text",
+      ) as HTMLSpanElement;
+      const loader = submitButton.querySelector(".loader") as HTMLSpanElement;
+
+      contactForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        emailInput.disabled = true;
+        submitButton.setAttribute("disabled", "true");
+        buttonText.textContent = "Enviando...";
+        loader.classList.remove("hidden");
+
+        try {
+          const response = await fetch("/api/send-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: emailInput.value }),
+          });
+
+          const data = await response.json();
+          if (!response.ok)
+            throw new Error(data.error || "Error al enviar el email");
+
+          window.location.href = "/confirm";
+          contactForm.reset();
+        } catch (error: any) {
+          alert(error.message || "Ocurrió un problema, intenta nuevamente.");
+          console.error("Error:", error);
+        } finally {
+          emailInput.disabled = false;
+          submitButton.removeAttribute("disabled");
+          buttonText.textContent = "Contáctame";
+          loader.classList.add("hidden");
+        }
+      });
+    });
+</script>
