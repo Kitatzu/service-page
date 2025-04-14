@@ -2,6 +2,7 @@ export const prerender = false;
 import { Resend } from "resend";
 import { type APIContext } from "astro";
 import EmailTemplate from "../../components/emails/EmailTemplate.astro";
+import EmailTemplateText from "../../components/emails/EmailTemplateText.txt?raw";
 import { experimental_AstroContainer } from "astro/container";
 
 const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
@@ -25,6 +26,7 @@ export async function POST({ request }: { request: APIContext["request"] }) {
 
   try {
     const emailHTML = await container.renderToString(EmailTemplate);
+    const emailText = EmailTemplateText;
 
     // Envía el email usando Resend
     const { data, error } = await resend.emails.send({
@@ -32,6 +34,7 @@ export async function POST({ request }: { request: APIContext["request"] }) {
       to: email,
       subject: "Estoy interesado en mejorar mi web", // Asunto del email de saludo
       html: emailHTML,
+      text: emailText,
     });
 
     if (error) {
